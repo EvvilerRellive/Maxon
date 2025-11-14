@@ -1,0 +1,10 @@
+{
+  "access_token": "",
+  "timezone": "UTC+3",
+  "max_reminders_per_user": 10,
+  "storage_file": "data/reminders.json",
+  "webhook_secret": "",
+  "poll_interval_seconds": 5,
+  "updates_timeout_seconds": 30
+}
+

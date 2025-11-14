@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  maxon-bot:
+    build: .
+    container_name: maxon-bot
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      MAX_ACCESS_TOKEN: ${MAX_ACCESS_TOKEN}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET:-}
+      PORT: 8000
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
